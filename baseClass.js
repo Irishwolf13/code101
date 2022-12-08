@@ -10,7 +10,6 @@ class Queue {   //F.I.F.O.  First In First Out
         this.last = null;
         this.length = 0;
     }
-
     peek() {
         return this.first;
     }
