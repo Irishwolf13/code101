@@ -4,7 +4,7 @@ class Node {
         this.next = null;       
     }
 }
-class Queue {   //F.I.F.O.  First In First Out
+class Queue {   //F.I.F.O.  First In First Out  (Uses Nodes)
     constructor() {
         this.first = null;
         this.last = null;
@@ -37,20 +37,20 @@ class Queue {   //F.I.F.O.  First In First Out
         return this;
     }
 }
-class stackLinkedList {  //F.I.L.O.  First In Last Out
-    constructor(){              //Runs when stackLinkedList is called
-        this.top = null;        //Top Node on stack
-        this.bottom = null;     //Bottom Node in staack
-        this.legnth = 0;        //Total Number of Nodes in Stack
+class stackLinkedList {  //F.I.L.O.  First In Last Out  (Uses Nodes)
+    constructor(){                              //Runs when stackLinkedList is called
+        this.top = null;                        //Top Node on stack
+        this.bottom = null;                     //Bottom Node in staack
+        this.legnth = 0;                        //Total Number of Nodes in Stack
     }
     peek(){
-        return this.top;        //O(n) returns top Node on Stack
+        return this.top;                        //O(n) returns top Node on Stack
     }
     push(value){
-        const newNode = new Node(value);    //Calls new Node to create the node to be placed on top.
-        if (this.legnth == 0) {             //Checks to see if this is the first Node being put on this stack
-            this.top = newNode;             //If it is the first node, it will be both this.top and this.bottom
-            this.bottom = newNode;          //If it is the first node, it will be both this.top and this.bottom
+        const newNode = new Node(value);        //Calls new Node to create the node to be placed on top.
+        if (this.legnth == 0) {                 //Checks to see if this is the first Node being put on this stack
+            this.top = newNode;                 //If it is the first node, it will be both this.top and this.bottom
+            this.bottom = newNode;              //If it is the first node, it will be both this.top and this.bottom
         }else {
             const holdingPointer = this.top;    //Place holder of the current top node of the stack
             this.top = newNode;                 //The new node is placed 'on top' of the stack, but will need a .next, given on the next line
@@ -86,4 +86,51 @@ class stackArrays {     //F.I.L.O.  First In Last Out  (No node needed)
     pop(){
         return this.array.pop();        
     }
+}
+
+class BinaryTreeNode {
+    constructor(value){
+        this.left = null;
+        this.right = null;
+        this.value = value;
+    }
+}
+
+class BinarySearch {
+    constructor(){
+        this.root = null;
+        this.length = 0;
+    }
+    insert(value){
+        const newNode = new BinaryTreeNode(value);
+        if (this.root === null){
+            this.root = newNode;
+        }else{
+            const currentNode = this.root;
+            for (let i = 0; i < this.length; i++) {
+                if (value == currentNode.value){
+                    console.log("This value is already in this tree.")
+                    break
+                }
+                if (value < currentNode.value){
+                    if (!currentNode.left){
+                        currentNode.left = newNode;
+                        return this
+                    }
+                    currentNode = currentNode.left;
+                }else {
+                    if (!currentNode.right){
+                        currentNode.right = newNode;
+                        return this
+                    }
+                    currentNode = currentNode.right;
+                }
+            }
+        }
+        this.length++;
+    }
+    lookup(value){
+        // THIS IS WHERE YOU LEFT OFF.... Time to try and do a lookup. Sleep well.
+    }
+    //remove
 }
